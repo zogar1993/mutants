@@ -1,27 +1,27 @@
-package net.jemzart.mutants.traversers;
+package net.jemzart.mutants.unit.traversers;
 
-import net.jemzart.mutants.dna.DNA;
+import net.jemzart.mutants.domain.dna.DNA;
+import net.jemzart.mutants.domain.traversers.HorizontalTraverser;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertFalse;
 
-public class VerticalTraverserTest {
+public class HorizontalTraverserTest {
 	@Test
 	public void fullScan(){
 		DNA dna = new DNA(new String[]{"AC", "GT"});
-		VerticalTraverser traverser = new VerticalTraverser(dna);
+		HorizontalTraverser traverser = new HorizontalTraverser(dna);
 
 		//first line
 		assertEquals(traverser.current(), 'A');
 		assertTrue(traverser.advance(1));
-		assertEquals(traverser.current(), 'G');
+		assertEquals(traverser.current(), 'C');
 		assertFalse(traverser.advance(1));
 
 		assertTrue(traverser.nextLine());
 
 		//second line
-		assertEquals(traverser.current(), 'C');
+		assertEquals(traverser.current(), 'G');
 		assertTrue(traverser.advance(1));
 		assertEquals(traverser.current(), 'T');
 		assertFalse(traverser.advance(1));
@@ -32,7 +32,7 @@ public class VerticalTraverserTest {
 	@Test
 	public void retrieve() {
 		DNA dna = new DNA(new String[]{"AC", "GT"});
-		VerticalTraverser traverser = new VerticalTraverser(dna);
+		HorizontalTraverser traverser = new HorizontalTraverser(dna);
 
 		traverser.advance(1);
 

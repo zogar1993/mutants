@@ -1,4 +1,4 @@
-package net.jemzart.mutants.traversers;
+package net.jemzart.mutants.domain.traversers;
 
 public interface LineTraverser {
 	char current();

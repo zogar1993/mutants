@@ -1,34 +1,34 @@
-package net.jemzart.mutants.traversers;
+package net.jemzart.mutants.unit.traversers;
 
-import net.jemzart.mutants.dna.DNA;
+import net.jemzart.mutants.domain.dna.DNA;
+import net.jemzart.mutants.domain.traversers.InvertedDiagonalTraverser;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
-public class DiagonalTraverserTest {
-
+public class InvertedDiagonalTraverserTest {
 	@Test
 	public void fullScan(){
 		DNA dna = new DNA(new String[]{"AC", "GT"});
-		DiagonalTraverser traverser = new DiagonalTraverser(dna);
+		InvertedDiagonalTraverser traverser = new InvertedDiagonalTraverser(dna);
 
 		//first line
-		assertEquals(traverser.current(), 'G');
+		assertEquals(traverser.current(), 'A');
 		assertFalse(traverser.advance(1));
 
 		assertTrue(traverser.nextLine());
 
 		//second line
-		assertEquals(traverser.current(), 'A');
+		assertEquals(traverser.current(), 'C');
 		assertTrue(traverser.advance(1));
-		assertEquals(traverser.current(), 'T');
+		assertEquals(traverser.current(), 'G');
 		assertFalse(traverser.advance(1));
 
 		assertTrue(traverser.nextLine());
 
 		//third line
-		assertEquals(traverser.current(), 'C');
+		assertEquals(traverser.current(), 'T');
 		assertFalse(traverser.advance(1));
 
 		assertFalse(traverser.nextLine());
@@ -37,11 +37,11 @@ public class DiagonalTraverserTest {
 	@Test
 	public void retrieve() {
 		DNA dna = new DNA(new String[]{"AC", "GT"});
-		DiagonalTraverser traverser = new DiagonalTraverser(dna);
+		InvertedDiagonalTraverser traverser = new InvertedDiagonalTraverser(dna);
 
 		traverser.nextLine();
 		traverser.advance(1);
 
-		assertEquals(traverser.retrieve(-1), 'A');
+		assertEquals(traverser.retrieve(-1), 'C');
 	}
 }

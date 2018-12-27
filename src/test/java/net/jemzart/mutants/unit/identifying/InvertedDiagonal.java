@@ -1,18 +1,17 @@
-package net.jemzart.mutants.identifying;
+package net.jemzart.mutants.unit.identifying;
 
-import net.jemzart.mutants.MutantIdentifier;
+import net.jemzart.mutants.domain.MutantIdentifier;
 import org.junit.Test;
 
-public class Diagonal {
+public class InvertedDiagonal {
 	@Test
 	public void oneIsNotEnough(){
-
 		String[] dna = {
-			"TCCAA",
-			"CTGGA",
-			"CGTGC",
+			"AACCT",
 			"AGGTC",
-			"AACCA"
+			"CGTGC",
+			"CTGGA",
+			"ACCAA"
 		};
 		boolean isMutant = MutantIdentifier.isMutant(dna);
 		assert !isMutant;
@@ -22,11 +21,11 @@ public class Diagonal {
 	@Test
 	public void twoAreEnough(){
 		String[] dna = {
-			"ATAAA",
-			"TCTAA",
-			"ATCTA",
+			"AAATA",
 			"AATCT",
-			"AAATA"
+			"ATCTA",
+			"TCTAA",
+			"ATAAA"
 		};
 		boolean isMutant = MutantIdentifier.isMutant(dna);
 		assert isMutant;

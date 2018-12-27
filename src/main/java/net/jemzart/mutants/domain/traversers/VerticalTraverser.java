@@ -1,6 +1,6 @@
-package net.jemzart.mutants.traversers;
+package net.jemzart.mutants.domain.traversers;
 
-import net.jemzart.mutants.dna.DNA;
+import net.jemzart.mutants.domain.dna.DNA;
 
 public class VerticalTraverser implements LineTraverser {
 	private DNA dna;

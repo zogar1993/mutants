@@ -1,6 +1,6 @@
-package net.jemzart.mutants.dna;
+package net.jemzart.mutants.domain.dna;
 
-import net.jemzart.mutants.dna.exceptions.InvalidDNAException;
+import net.jemzart.mutants.domain.dna.exceptions.InvalidDNAException;
 
 public class DNA {
 	private String[] dna;

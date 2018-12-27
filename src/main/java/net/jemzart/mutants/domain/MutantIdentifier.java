@@ -1,7 +1,7 @@
-package net.jemzart.mutants;
+package net.jemzart.mutants.domain;
 
-import net.jemzart.mutants.dna.DNA;
-import net.jemzart.mutants.traversers.*;
+import net.jemzart.mutants.domain.dna.DNA;
+import net.jemzart.mutants.domain.traversers.*;
 
 import java.util.ArrayList;
 import java.util.List;

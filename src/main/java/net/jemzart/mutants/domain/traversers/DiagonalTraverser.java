@@ -1,18 +1,18 @@
-package net.jemzart.mutants.traversers;
+package net.jemzart.mutants.domain.traversers;
 
-import net.jemzart.mutants.dna.DNA;
+import net.jemzart.mutants.domain.dna.DNA;
 
-public class InvertedDiagonalTraverser implements LineTraverser {
+public class DiagonalTraverser implements LineTraverser {
 	private DNA dna;
 	private int initial_x;
 	private int initial_y;
 	private int x;
 	private int y;
 
-	public InvertedDiagonalTraverser(DNA dna) {
+	public DiagonalTraverser(DNA dna) {
 		this.dna = dna;
 		initial_x = 0;
-		initial_y = 0;
+		initial_y = dna.length() - 1;
 		x = initial_x;
 		y = initial_y;
 	}
@@ -24,24 +24,24 @@ public class InvertedDiagonalTraverser implements LineTraverser {
 
 	@Override
 	public char retrieve(int offset) {
-		return dna.get(x - offset, y + offset);
+		return dna.get(x + offset, y + offset);
 	}
 
 	@Override
 	public boolean advance(int amount) {
-		x -= amount;
+		x += amount;
 		y += amount;
-		return x >= 0 && y < dna.length();
+		return x < dna.length() && y < dna.length();
 	}
 
 	@Override
 	public boolean nextLine() {
-		if (initial_x < dna.length() - 1) initial_x++;
-		else initial_y++;
-		if(initial_y >= dna.length()) return false;
+		if (initial_y > 0) initial_y--;
+		else initial_x++;
+		if(initial_x >= dna.length()) return false;
 
 		x = initial_x;
 		y = initial_y;
 		return y < dna.length();
-}
+	}
 }

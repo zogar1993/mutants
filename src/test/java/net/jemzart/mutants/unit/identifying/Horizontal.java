@@ -1,6 +1,6 @@
-package net.jemzart.mutants.identifying;
+package net.jemzart.mutants.unit.identifying;
 
-import net.jemzart.mutants.MutantIdentifier;
+import net.jemzart.mutants.domain.MutantIdentifier;
 import org.junit.Test;
 
 public class Horizontal {

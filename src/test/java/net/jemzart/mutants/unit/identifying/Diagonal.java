@@ -1,16 +1,18 @@
-package net.jemzart.mutants.identifying;
+package net.jemzart.mutants.unit.identifying;
 
-import net.jemzart.mutants.MutantIdentifier;
+import net.jemzart.mutants.domain.MutantIdentifier;
 import org.junit.Test;
 
-public class Vertical {
+public class Diagonal {
 	@Test
 	public void oneIsNotEnough(){
+
 		String[] dna = {
-			"TAAC",
-			"TACC",
-			"TCCA",
-			"TCAA"
+			"TCCAA",
+			"CTGGA",
+			"CGTGC",
+			"AGGTC",
+			"AACCA"
 		};
 		boolean isMutant = MutantIdentifier.isMutant(dna);
 		assert !isMutant;
@@ -20,10 +22,11 @@ public class Vertical {
 	@Test
 	public void twoAreEnough(){
 		String[] dna = {
-			"TATC",
-			"TATC",
-			"TCTA",
-			"TCTA"
+			"ATAAA",
+			"TCTAA",
+			"ATCTA",
+			"AATCT",
+			"AAATA"
 		};
 		boolean isMutant = MutantIdentifier.isMutant(dna);
 		assert isMutant;

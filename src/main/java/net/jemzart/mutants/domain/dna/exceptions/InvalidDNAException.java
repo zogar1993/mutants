@@ -1,4 +1,4 @@
-package net.jemzart.mutants.dna.exceptions;
+package net.jemzart.mutants.domain.dna.exceptions;
 
 public class InvalidDNAException extends RuntimeException {
 	private String[] dna;

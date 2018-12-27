@@ -1,7 +1,7 @@
-package net.jemzart.mutants.dna;
+package net.jemzart.mutants.unit.dna;
 
-import net.jemzart.mutants.dna.DNA;
-import net.jemzart.mutants.dna.exceptions.InvalidDNAException;
+import net.jemzart.mutants.domain.dna.DNA;
+import net.jemzart.mutants.domain.dna.exceptions.InvalidDNAException;
 import org.junit.Test;
 
 public class DNATest {
