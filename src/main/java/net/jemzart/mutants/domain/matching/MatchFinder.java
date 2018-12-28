@@ -6,22 +6,21 @@ public class MatchFinder {
 	private byte found = 0;
 	private LineTraverser traverser;
 
-	public boolean scan(LineTraverser traverser) {
+	public boolean scan(LineTraverser traverser){
 		this.traverser = traverser;
 		do {
-			if(scanLine())
-				return true;//The search is over, mutant pattern found.
+			if(scanLine()) return true;//The search is over, mutant pattern found.
 		} while (traverser.nextLine());
 		return false;
 	}
 
-	private boolean scanLine() {
+	private boolean scanLine(){
 		if (!traverser.advance(1)) return false;
 		char last = traverser.current();
 
 		//Since I must find 4 in a row, advancing 2 at a time makes sure I do not miss a match.
 		//The amount of operations is roughly halved in an optimistic use case.
-		while (traverser.advance(2)) {
+		while (traverser.advance(2)){
 			char current = traverser.current();
 			if (current == last){
 				if (current == traverser.retrieve(-1)){//check between current and last one
@@ -61,8 +60,8 @@ public class MatchFinder {
 	}
 
 	private void skip(char value){
-		while (traverser.advance(1))
-			if (traverser.current() != value)
-				return;
+		while (traverser.advance(1)){
+			if (traverser.current() != value) return;
+		}
 	}
 }
