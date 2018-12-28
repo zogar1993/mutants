@@ -55,18 +55,21 @@ public class MutantIdentifier {
 						found++;
 						if (theSearchIsOver()) return true;//mutant pattern found.
 						skip(current, traverser);
+						traverser.advance(1);//skip first character after match
 					} else {
 						if (traverser.advance(1)) {//not end of line
 							if (current == traverser.current()) {//check after the just found three in a row
 								found++;
 								if (theSearchIsOver()) return true;//mutant pattern found.
 								skip(current, traverser);
+								traverser.advance(1);//skip first character after match
 							}
 						}
 					}
 				}
 			}
-			last = current;
+			if(!traverser.advance(0)) break;
+			last = traverser.current();
 		}
 		return false;
 	}
@@ -77,9 +80,7 @@ public class MutantIdentifier {
 
 	private void skip(char value, LineTraverser traverser){
 		while (traverser.advance(1))
-			if (traverser.current() != value){
-				traverser.advance(-1);//set it at last occurrence of value
+			if (traverser.current() != value)
 				return;
-			}
 	}
 }

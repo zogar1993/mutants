@@ -56,4 +56,38 @@ public class ComplexDNA {
 		boolean isMutant = MutantIdentifier.isMutant(dna);
 		assert isMutant;
 	}
+
+	@Test
+	public void nineInARowSequenceIsNotEnough(){
+		String[] dna = {
+			"CCCCCCCCC",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"GTTTATTTG",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"GTTTATTTG"
+		};
+		boolean isMutant = MutantIdentifier.isMutant(dna);
+		assert !isMutant;
+	}
+
+	@Test
+	public void twoSequencesInSameLine(){
+		String[] dna = {
+			"CCCCTCCCC",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"GTTTATTTG",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"AAAGGGAAA",
+			"GTTTATTTG"
+		};
+		boolean isMutant = MutantIdentifier.isMutant(dna);
+		assert isMutant;
+	}
 }

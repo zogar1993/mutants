@@ -1,7 +1,7 @@
 package net.jemzart.mutants.configuration;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import net.jemzart.mutants.controllers.MutantController;
+import net.jemzart.mutants.controllers.MainController;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JerseyConfiguration extends ResourceConfig {
 	public JerseyConfiguration(){
-		register(MutantController.class);
+		register(MainController.class);
 //		packages("net.jemzart.mutants.controllers");
 	}
 

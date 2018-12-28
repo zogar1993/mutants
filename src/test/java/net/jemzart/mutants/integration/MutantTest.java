@@ -17,7 +17,6 @@ import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 @SpringBootTest(classes = {MutantsApplication.class}, webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
-@Component
 public class MutantTest {
 	@LocalServerPort
 	private int port = 0;
@@ -26,6 +25,7 @@ public class MutantTest {
 	public void setUp() {
 		RestAssured.port = port;
 	}
+
 	@Test
 	public void mutant(){
 		given().contentType(JSON).body(
