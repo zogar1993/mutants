@@ -1,10 +1,18 @@
 # Mutants
 
-
 [![Travis CI Build Status](https://travis-ci.org/zogar1993/mutants.svg?branch=master)](https://travis-ci.org/zogar1993/mutants)
 [![Coverage Status](https://img.shields.io/coveralls/github/zogar1993/mutants.svg)](https://coveralls.io/github/zogar1993/mutants?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9c2049c7f9154d86b5ebcf2b75c01787)](https://www.codacy.com/app/zogar1993/mutants?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zogar1993/mutants&amp;utm_campaign=Badge_Grade)
 
+- - -
+
+Hosteado en http://mutants-meli.appspot.com
+
+Expone los servicios:
+- POST -> http://mutants-meli.appspot.com/mutant
+- GET -> http://mutants-meli.appspot.com/stats
+
+- - -
 
 Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar
 contra los X-Men.
