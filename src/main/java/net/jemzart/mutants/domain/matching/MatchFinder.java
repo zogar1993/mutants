@@ -6,6 +6,13 @@ public class MatchFinder {
 	private byte found = 0;
 	private LineTraverser traverser;
 
+	/**
+	 * searches for sequences of four in a row.
+	 * stops if 2 are found.
+	 *
+	 * @param traverser will be thoroughly searched, trough all its lines.
+	 * @return true if 2 sequences are found.
+	 */
 	public boolean scan(LineTraverser traverser){
 		this.traverser = traverser;
 		do {

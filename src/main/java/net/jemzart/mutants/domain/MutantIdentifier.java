@@ -20,6 +20,9 @@ public class MutantIdentifier {
 		traversers.add(new InvertedDiagonalTraverser(dna));
 	}
 
+	/**
+	 * @return true if dna corresponds to a mutant, false if it does not.
+	 */
 	public static boolean isMutant(String[] dna) {
 		MutantIdentifier mutantIdentifier = new MutantIdentifier(dna);
 		return mutantIdentifier.isMutant();

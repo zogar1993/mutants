@@ -37,7 +37,7 @@ public class MainController {
 		StatisticsResponse response = new StatisticsResponse();
 		response.setCount_human_dna(mutantStatistics.getHumanCount());
 		response.setCount_mutant_dna(mutantStatistics.getMutantCount());
-		response.setRatio(mutantStatistics.getRatio());
+		response.setRatio(mutantStatistics.getMutantsRatio());
 		return response;
 	}
 }

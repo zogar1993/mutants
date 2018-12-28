@@ -12,7 +12,7 @@ public class MutantStatisticsTest {
 	public void zeroData(){
 		MutantStatistics mutantStatistics = new MutantStatistics();
 
-		assertNull(mutantStatistics.getRatio());
+		assertNull(mutantStatistics.getMutantsRatio());
 	}
 
 	@Test
@@ -20,9 +20,9 @@ public class MutantStatisticsTest {
 		MutantStatistics mutantStatistics = new MutantStatistics();
 
 		mutantStatistics.addHuman();
-		mutantStatistics.getRatio();
+		mutantStatistics.getMutantsRatio();
 
-		assertEquals(mutantStatistics.getRatio(), 0, 0);
+		assertEquals(mutantStatistics.getMutantsRatio(), 0, 0);
 	}
 
 	@Test
@@ -30,9 +30,9 @@ public class MutantStatisticsTest {
 		MutantStatistics mutantStatistics = new MutantStatistics();
 
 		mutantStatistics.addMutant();
-		mutantStatistics.getRatio();
+		mutantStatistics.getMutantsRatio();
 
-		assertNull(mutantStatistics.getRatio());
+		assertNull(mutantStatistics.getMutantsRatio());
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class MutantStatisticsTest {
 		mutantStatistics.addHuman();
 		mutantStatistics.addMutant();
 
-		assertEquals(mutantStatistics.getRatio(), 0.5, 0);
+		assertEquals(mutantStatistics.getMutantsRatio(), 0.5, 0);
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class MutantStatisticsTest {
 		mutantStatistics.addHuman();
 		mutantStatistics.addMutant();
 
-		assertEquals(mutantStatistics.getRatio(), 1, 0);
+		assertEquals(mutantStatistics.getMutantsRatio(), 1, 0);
 	}
 
 	@Test
@@ -64,6 +64,6 @@ public class MutantStatisticsTest {
 		mutantStatistics.addMutant();
 		mutantStatistics.addMutant();
 
-		assertEquals(mutantStatistics.getRatio(), 2, 0);
+		assertEquals(mutantStatistics.getMutantsRatio(), 2, 0);
 	}
 }
