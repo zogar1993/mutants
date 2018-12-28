@@ -1,6 +1,7 @@
 package net.jemzart.mutants.domain;
 
 import net.jemzart.mutants.domain.dna.DNA;
+import net.jemzart.mutants.domain.matching.MatchFinder;
 import net.jemzart.mutants.domain.traversers.*;
 
 import java.util.ArrayList;
@@ -9,7 +10,8 @@ import java.util.List;
 public class MutantIdentifier {
 	private DNA dna;
 	private List<LineTraverser> traversers = new ArrayList<>();
-	private byte found = 0;
+	private MatchFinder matchFinder = new MatchFinder();
+
 	private MutantIdentifier(String[] raw){
 		dna = new DNA(raw);
 		traversers.add(new HorizontalTraverser(dna));
@@ -27,60 +29,9 @@ public class MutantIdentifier {
 		if (dna.length() < 4) return false;
 
 		for (LineTraverser traverser : traversers)
-			if(scanWithTraverser(traverser))
+			if(matchFinder.scan(traverser))
 				return true;//The search is over, mutant pattern found.
 
 		return false;
-	}
-
-	private boolean scanWithTraverser(LineTraverser traverser) {
-		do {
-			if(scanLine(traverser))
-				return true;//The search is over, mutant pattern found.
-		} while (traverser.nextLine());
-		return false;
-	}
-
-	private boolean scanLine(LineTraverser traverser) {
-		if (!traverser.advance(1)) return false;
-		char last = traverser.current();
-
-		//Since I must find 4 in a row, advancing 2 at a time makes sure I do not miss a match.
-		//The amount of operations is roughly halved in an optimistic use case.
-		while (traverser.advance(2)) {
-			char current = traverser.current();
-			if (current == last) {
-				if (current == traverser.retrieve(-1)) {//check between current and last one
-					if (current == traverser.retrieve(-3)) {//check before the just found three in a row
-						found++;
-						if (theSearchIsOver()) return true;//mutant pattern found.
-						skip(current, traverser);
-						traverser.advance(1);//skip first character after match
-					} else {
-						if (traverser.advance(1)) {//not end of line
-							if (current == traverser.current()) {//check after the just found three in a row
-								found++;
-								if (theSearchIsOver()) return true;//mutant pattern found.
-								skip(current, traverser);
-								traverser.advance(1);//skip first character after match
-							}
-						}
-					}
-				}
-			}
-			if(!traverser.advance(0)) break;
-			last = traverser.current();
-		}
-		return false;
-	}
-
-	private boolean theSearchIsOver(){
-		return found > 1;
-	}
-
-	private void skip(char value, LineTraverser traverser){
-		while (traverser.advance(1))
-			if (traverser.current() != value)
-				return;
 	}
 }
