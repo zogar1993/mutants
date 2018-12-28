@@ -81,3 +81,49 @@ Entregar:
 - Además del código fuente, cualquier pieza adicional que consideres aporta a la calidad
 del software construido.
 - URL de la API (Nivel 2 y 3)
+
+- - -
+
+## Resultados
+
+##### Nivel 1:
+
+Se encuentra en el codigo fuente disponibilizado.
+
+El lenguage utilizado es Java.
+
+El algoritmo busca reducir las comparaciones necesarias, buscando inicialmente coincidencias de 2 en 2 a partir del segundo elemento de cada linea, siendo una linea una suceción de caracteres donde podría encontrarse la secuencia buscada, en cualquier dirección (vertical, horizontal, y diagonal en los dos sentidos).
+
+##### Nivel 2:
+
+Se encuentra en el codigo fuente y en el servicio web disponibilizados.
+
+Se utiliza el servicio de Google App Engine.
+
+El siguiente es un request de ejemplo del servicio requerido:
+
+POST → http://mutants-meli.appspot.com/mutant { "dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"] }
+
+##### Nivel 3:
+
+Se encuentra en el codigo fuente y en el servicio web disponibilizados.
+
+Se anexa la base de datos en memoria H2.
+
+El siguiente es un request de ejemplo del servicio requerido:
+
+GET → http://mutants-meli.appspot.com/stats
+
+Response: {“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}
+
+##### Notas y Extras:
+
+- Las pruebas unitarias se realizaron con JUnit 4.
+- Las pruebas integrales se realizaron con RestAssured.
+- Las pruebas de cobertura se realizan con Pitest (tests de mutación)
+- Se anexa Travis CI al proceso para automatizar builds (https://travis-ci.org/zogar1993/mutants)
+- Se anexa Coveralls al proceso para obtener información de covertura (https://coveralls.io/github/zogar1993/mutants?branch=master)
+- Se anexa Codacy al proceso para obtener información de calidad de codigo (https://app.codacy.com/project/zogar1993/mutants/dashboard)
+- Debido a que no encontré manera de levantar mas instancias en el servició de App Engine de Google sin que me lo debiten, el servicio expuesto no logra superar una prueba de carga exaustiva.
+- Debido a que no se generan mas de una instancia, no vi razón para cambiar H2 por una base con persistencia en disco, pero ese sería un cambio necesario si se levantasen varias instancias del servicio.
+- Se utilizó JMeter para efectuar las pruebas de carga.
