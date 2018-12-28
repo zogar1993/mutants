@@ -26,14 +26,14 @@ En este caso el llamado a la función isMutant(dna) devuelve “true”.
 
 Desarrolla el algoritmo de la manera más eficiente posible.
 
-####Desafíos:
+#### Desafíos:
 
-#####Nivel 1:
+##### Nivel 1:
 
 Programa (en cualquier lenguaje de programación) que cumpla con el método pedido por
 Magneto.
 
-#####Nivel 2:
+##### Nivel 2:
 
 Crear una API REST, hostear esa API en un cloud computing libre (Google App Engine,
 Amazon AWS, etc), crear el servicio “/mutant/” en donde se pueda detectar si un humano es
@@ -48,7 +48,7 @@ siguiente formato:
 En caso de verificar un mutante, debería devolver un HTTP 200-OK, en caso contrario un
 403-Forbidden
 
-#####Nivel 3:
+##### Nivel 3:
 
 Anexar una base de datos, la cual guarde los ADN’s verificados con la API.
 
